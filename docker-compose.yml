@@ -7,8 +7,7 @@ services:
     image: react-app-with-enzyme:latest
     build:
       context: .
-      dockerfile: Dockerfile
-    command: 'CI=true yarn test"'
+    command: 'yarn --ci test'
     volumes:
       - .:/code
 

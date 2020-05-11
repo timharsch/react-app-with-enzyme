@@ -1,12 +1,8 @@
 #!/bin/bash
 
-pwd
-
-echo $PATH
-
 # JOB_NAME is the name of the project of this build. This is the name you gave your job. It is set up by Jenkins
-PROJ=${JOB_NAME:-local}
-PROJ=${PROJ,,} # ensure lowercase
+PROJ="${JOB_NAME:-local}"
+PROJ=`echo "$PROJ" | tr '[:upper:]' '[:lower:]'`  # ensure lowercase
 
 DOCKER_FILES="-f docker-compose.yml"
 
@@ -18,4 +14,4 @@ DOCKER_FILES="-f docker-compose.yml"
 docker-compose -p ${PROJ} ${DOCKER_FILES} rm -f
 
 # Starting new stack environment
-docker-compose -p ${PROJ} ${DOCKER_FILES} up -d --build --remove-orphans web
+docker-compose -p ${PROJ} ${DOCKER_FILES}  run --rm web bash -c "yarn test --watchAll=false"
