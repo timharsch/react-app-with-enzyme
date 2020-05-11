@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  ####
+  # docker service: web
+  web:
+    image: react-app-with-enzyme:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: 'CI=true yarn test"'
+    volumes:
+      - .:/code
+

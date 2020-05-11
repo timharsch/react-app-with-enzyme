@@ -1,0 +1,21 @@
+#!/bin/bash
+
+pwd
+
+echo $PATH
+
+# JOB_NAME is the name of the project of this build. This is the name you gave your job. It is set up by Jenkins
+PROJ=${JOB_NAME:-local}
+PROJ=${PROJ,,} # ensure lowercase
+
+DOCKER_FILES="-f docker-compose.yml"
+
+## TODO:
+# kill all containers with docker-compose -p PROJ ps -q
+# starting containers should do a migration
+
+# Remove Previous Stack
+docker-compose -p ${PROJ} ${DOCKER_FILES} rm -f
+
+# Starting new stack environment
+docker-compose -p ${PROJ} ${DOCKER_FILES} up -d --build --remove-orphans web
