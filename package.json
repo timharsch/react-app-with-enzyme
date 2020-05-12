@@ -24,6 +24,13 @@
   "jest": {
     "coverageReporters": [
       "text", "cobertura"
+    ],
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/coverage/**",
+      "!**/serviceWorker.js",
+      "!**/index.js"
     ]
   },
   "jest-junit": {
