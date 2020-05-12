@@ -6,7 +6,7 @@ services:
   web:
     image: react-app-with-enzyme:latest
     build:
-      context: .
+      context: ./containers
     command: 'yarn --ci test'
     volumes:
       - .:/code
