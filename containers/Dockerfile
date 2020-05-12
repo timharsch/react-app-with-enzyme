@@ -6,5 +6,4 @@ RUN apk add bash
 RUN mkdir /code
 WORKDIR /code
 
-COPY ./ /
 

@@ -7,7 +7,7 @@ This project's only purpose is to demonstrate testing a React project.  The actu
 ## To run the tests locally perform these steps
 
 ```shell
-docker build -t react-app-with-enzyme:latest . 
+docker build -f containers/Dockerfile  -t react-app-with-enzyme:latest containers
 docker run -v `pwd`:/code react-app-with-enzyme:latest bash -c 'yarn test'
 ```
 

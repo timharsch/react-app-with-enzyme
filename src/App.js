@@ -9,4 +9,12 @@ function App() {
   );
 }
 
+function thisFuncNotCodeCovered() {
+  console.log("and it is never called")
+  console.log("and it is never called")
+  console.log("and it is never called")
+  console.log("and it is never called")
+  console.log("and it is never called")
+}
+
 export default App;
