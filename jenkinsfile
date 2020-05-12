@@ -1,0 +1,33 @@
+pipeline {
+  agent any
+  stages {
+    stage('presetup') {
+        steps {
+          git branch: 'master',
+            credentialsId: 'jenkins-timharsch.nopass',
+             url: 'git@github.com:timharsch/react-app-with-enzyme.git'
+        }
+    } // end stage
+    stage('configure and start container') {
+        steps {
+          echo "Setup the containerized environment..."
+          sh './jenkins_start_integration_test_env.sh'
+        }
+    } // end stage
+    stage('Test') {
+      steps {
+        script {
+          echo "Run the tests"
+          sh './run_tests.sh'
+        }
+      }
+    } // end stage
+  } // end stages
+  post {
+    always {
+        junit 'reports/junit.xml'
+
+        cleanWs()
+    } // end always
+  } // end post
+} // end pipeline
