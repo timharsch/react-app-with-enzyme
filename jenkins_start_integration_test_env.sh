@@ -15,4 +15,4 @@ docker-compose -p ${PROJ} ${DOCKER_FILES} rm -f
 
 # Starting new stack environment
 docker-compose -p ${PROJ} ${DOCKER_FILES}  run --rm web bash -c "yarn install --frozen-lockfile"
-docker-compose -p ${PROJ} ${DOCKER_FILES}  run --rm web bash -c "yarn test --watchAll=false"
+docker-compose -p ${PROJ} ${DOCKER_FILES}  run --rm web bash -c "yarn test:ci --watchAll=false"
